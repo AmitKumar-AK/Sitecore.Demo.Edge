@@ -33,11 +33,14 @@ const SessionHeroBanner = (props: SessionInformationPageHeroProps): JSX.Element 
                   <DisplayName Name={props.Name} />
               </div>
               <div>
-              {props?.Rooms && (
+                {/* Dispaly Multiple Rooms*/}
+                {props?.Rooms && (
                   <InfoText Icon={faDoorOpen}>
-                    <Text tag="span" field={props?.Rooms[0]?.fields?.Name} />
+                    {props?.Rooms.map((roomDetails, index) => (
+                        <Text style={{marginRight: 1 + 'em'}} key={index} tag="span" field={roomDetails?.fields?.Name} />
+                        ))}                    
                   </InfoText>
-                )}                
+                )}
                 <InfoText Icon={faCalendar}>
                   <span>{getSessionDays(props.Day)}</span>
                 </InfoText>
