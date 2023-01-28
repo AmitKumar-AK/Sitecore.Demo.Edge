@@ -1,4 +1,3 @@
-//import { ContentBannerProps, SessionInformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
 import { faCalendar, faClock, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import InfoText from 'components/NonSitecore/InfoText';
 import { getSessionDays, getSessionTime } from 'src/helpers/DateHelper';
