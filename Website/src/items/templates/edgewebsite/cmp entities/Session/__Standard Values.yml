@@ -95,6 +95,20 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{C657F752-50FC-40B1-BCC2-2D303F0DB1A5}"
+              p:after="r[@uid='{20D05B20-378A-4C3B-8833-EB32A191CADE}']"
+              s:id="{E4953E1C-9F51-4012-BC98-ADB60446D490}"
+              s:ph="/jss-main" />
+          </d>
+        </r>
     - ID: "2063a900-230c-4172-ba19-c00992f363f7"
       Hint: ImageTransformation
       Value: web
@@ -106,4 +120,4 @@ Languages:
       Value: $name
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "785d70f6-ed32-43ff-839b-513c69ba38df"
+      Value: "91c822f2-5278-4a87-aa16-dee910d6bf72"
