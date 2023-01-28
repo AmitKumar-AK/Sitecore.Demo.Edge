@@ -6,7 +6,6 @@ export type ContentHeroBannerProps = ComponentProps & {
   };
 
 const ContentHeroBannerComponent = (props: ContentHeroBannerProps): JSX.Element => {
-  console.log('Here-1');
   return (
     <div>
 

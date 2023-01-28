@@ -5,11 +5,10 @@ import { getSessionDays, getSessionTime } from 'src/helpers/DateHelper';
 import { SessionInformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
 import { Text } from '@sitecore-jss/sitecore-jss-nextjs';
 import DisplayName from 'src/features/PageContent/components/DisplayName';
+import DisplayTitle from 'src/features/PageContent/components/DisplayTitle';
 
 const SessionHeroBanner = (props: SessionInformationPageHeroProps): JSX.Element => {
-  console.log('Here-3');
   const premiumSessionQualificative = props.Premium.value ? 'premium' : '';
-
   return (
     <section className={`session-information-page-hero ${premiumSessionQualificative}`}>
       <div
@@ -30,10 +29,7 @@ const SessionHeroBanner = (props: SessionInformationPageHeroProps): JSX.Element 
           <div className="content-container">
             <div className="container-content-text">
               <div>
-                  <p className="title">
-                    Explore the{' '}
-                    <span className="information-type">{premiumSessionQualificative}</span> session:
-                  </p>
+                  <DisplayTitle Title={"Explore the <span className='information-type'>" + premiumSessionQualificative + "</span> session:  "} />
                   <DisplayName Name={props.Name} />
               </div>
               <div>

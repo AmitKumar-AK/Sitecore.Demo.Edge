@@ -3,12 +3,11 @@ import { BannerProps } from "src/types/Common/ContentBanner/contentBannerProps"
 import SessionHeroBanner from "./SessionHeroBanner"
 
 const ContentHeroBanner = (props:BannerProps) => {
-  console.log('Here-2');
   switch (props.Type.value) {
     case "Session":
-      return <SessionHeroBanner {...props} />
+      return <SessionHeroBanner Rooms={[]} Day={[]} Timeslots={[]} {...props} />
     default:
-      return <SessionHeroBanner {...props} />
+      return <SessionHeroBanner Rooms={[]} Day={[]} Timeslots={[]} {...props} />
   }
 }
 
