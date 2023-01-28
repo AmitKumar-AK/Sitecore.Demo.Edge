@@ -3,6 +3,8 @@ import { faCalendar, faClock, faDoorOpen } from '@fortawesome/free-solid-svg-ico
 import InfoText from 'components/NonSitecore/InfoText';
 import { getSessionDays, getSessionTime } from 'src/helpers/DateHelper';
 import { SessionInformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
+import { Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import DisplayName from 'src/features/PageContent/components/DisplayName';
 
 const SessionHeroBanner = (props: SessionInformationPageHeroProps): JSX.Element => {
   console.log('Here-3');
@@ -32,14 +34,12 @@ const SessionHeroBanner = (props: SessionInformationPageHeroProps): JSX.Element 
                     Explore the{' '}
                     <span className="information-type">{premiumSessionQualificative}</span> session:
                   </p>
-                  <h1 className="name">
-                    {props.Name.value}
-                  </h1>
+                  <DisplayName Name={props.Name} />
               </div>
               <div>
               {props?.Rooms && (
                   <InfoText Icon={faDoorOpen}>
-                    {props?.Rooms[0]?.fields?.Name.value}
+                    <Text tag="span" field={props?.Rooms[0]?.fields?.Name} />
                   </InfoText>
                 )}                
                 <InfoText Icon={faCalendar}>
