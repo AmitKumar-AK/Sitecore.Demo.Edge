@@ -67,6 +67,10 @@ SharedFields:
           uid="{C188AF30-3FE2-5450-AFE3-B207EFCEDFB1}"
           ccb="Clear on publish" />
         <r
+          id="{E4953E1C-9F51-4012-BC98-ADB60446D490}"
+          ph="/jss-main"
+          uid="{C1D6AA1D-35A9-415C-AACA-8DD1D0C76BC2}" />
+        <r
           rname="Section"
           ds="{174A7AFC-D923-58F3-BEF8-AD8CAAD8C5B9}"
           id="{2F9D05FD-8E58-56CC-B586-41A3EC155CD7}"
@@ -101,7 +105,7 @@ Languages:
       Value: "{C55B483C-EA7F-4E76-A066-985F7D9396CA}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f9e97f78-7676-41e8-b61e-532820d4e1f6"
+      Value: "b73b4481-d5a0-4312-b3d1-c35d25229bb2"
     - ID: "e91669e4-7a60-495f-b868-47f9b15c28b3"
       Hint: Name
       Value: $name

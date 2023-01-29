@@ -8,7 +8,6 @@ export type ContentHeroBannerProps = ComponentProps & {
 const ContentHeroBannerComponent = (props: ContentHeroBannerProps): JSX.Element => {
   return (
     <div>
-
       <ContentHeroBanner key={props.fields.Name.value} {...props.fields} />
     </div>
   );
