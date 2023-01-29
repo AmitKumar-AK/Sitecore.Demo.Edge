@@ -13,7 +13,7 @@ const ContentHeroBanner = (props:BannerProps) => {
     case "Session":
       return <SessionHeroBanner Premium={undefined} Rooms={[]} Day={[]} Timeslots={[]} TemplateName={templateName} {...props} />
     default:
-      return <InformationPageHero  TemplateName={templateName} Featured={undefined} Picture={undefined} JobTitle={undefined} Company={undefined} Location={undefined} {...props} />
+      return <InformationPageHero  Logo={undefined} Level={undefined} TemplateName={templateName} Featured={undefined} Picture={undefined} JobTitle={undefined} Company={undefined} Location={undefined} {...props} />
   }
   //return "";
 }

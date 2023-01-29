@@ -1,5 +1,4 @@
-import { Field, ImageField, LayoutServicePageState, Text, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import { ComponentProps } from 'lib/component-props';
+import {  LayoutServicePageState, Text, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
   faFacebookF,
   faTwitter,
@@ -7,30 +6,27 @@ import {
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import SocialIcon from 'components/NonSitecore/SocialIcon';
-import { SpeakerInformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
+import { InformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
 
-export type InformationPageHeroProps = ComponentProps & {
-  fields: {
-    Name: Field<string>;
-    Image: ImageField;
-    FacebookProfileLink?: Field<string>;
-    TwitterProfileLink?: Field<string>;
-    InstagramProfileLink?: Field<string>;
-    LinkedinProfileLink?: Field<string>;
-  };
-  type: string;
-  qualificative: string;
-  informations?: JSX.Element;
-};
 
-const InformationPageHero = (props: SpeakerInformationPageHeroProps): JSX.Element => {
+const InformationPageHero = (props: InformationPageHeroProps): JSX.Element => {
   console.log('Here-2');
   const { sitecoreContext } = useSitecoreContext();
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
-  const lowerCaseQualificative = props?.Featured?.value ? 'featured' : '';
-
-
+  let lowerCaseQualificative ="";
+  let imageSrc="";
+  if(props.TemplateName=="Speaker")
+  {
+    lowerCaseQualificative = props?.Featured?.value ? 'featured' : '';
+    imageSrc =props.Picture.value?.src
+  }
+  else
+  {
+    lowerCaseQualificative = props?.Level?.value ? props?.Level?.value.toLocaleLowerCase() : '';
+    imageSrc =props.Logo.value?.src
+  }
+  
   const informations =
     props.JobTitle?.value ||
     props.Company?.value ||
@@ -68,7 +64,7 @@ const InformationPageHero = (props: SpeakerInformationPageHeroProps): JSX.Elemen
         <div className="content">
           <div className="image-container">
             {/* Purposefully not using a JSS Image component here to avoid width/height HTML attributes on the img tag */}
-            <img src={props.Picture.value?.src} alt="Image" loading="lazy" />
+            <img src={imageSrc} alt="Image" loading="lazy" />
           </div>
           <div className="gradient-container"></div>
           <div className="content-container">
