@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import SocialIcon from 'components/NonSitecore/SocialIcon';
 import { InformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
+import SessionHeroBanner from './SessionHeroBanner';
 
 
 const InformationPageHero = (props: InformationPageHeroProps): JSX.Element => {
@@ -16,12 +17,12 @@ const InformationPageHero = (props: InformationPageHeroProps): JSX.Element => {
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
   let lowerCaseQualificative ="";
   let imageSrc="";
-  if(props.TemplateName=="Speaker")
+ if(props.TemplateName=="Speaker")
   {
     lowerCaseQualificative = props?.Featured?.value ? 'featured' : '';
     imageSrc =props.Picture.value?.src
   }
-  else
+  else if(props.TemplateName=="Vendor" || props.TemplateName=="Sponsor")
   {
     lowerCaseQualificative = props?.Level?.value ? props?.Level?.value.toLocaleLowerCase() : '';
     imageSrc =props.Logo.value?.src
@@ -57,39 +58,46 @@ const InformationPageHero = (props: InformationPageHeroProps): JSX.Element => {
       <div className="informations">{informations}</div>
     ) : undefined;
 
-  return (
-        <section
-        className={`information-page-hero ${props.TemplateName.toLocaleLowerCase()}-information-page-hero ${lowerCaseQualificative}`}
-        >
-        <div className="content">
-          <div className="image-container">
-            {/* Purposefully not using a JSS Image component here to avoid width/height HTML attributes on the img tag */}
-            <img src={imageSrc} alt="Image" loading="lazy" />
+  return props.TemplateName == "Session" ? (
+    <SessionHeroBanner Premium={undefined} Rooms={[]} Day={[]} Timeslots={[]} TemplateName={props.TemplateName} {...props} />
+  ) : (
+    <section
+    className={`information-page-hero ${props.TemplateName.toLocaleLowerCase()}-information-page-hero ${lowerCaseQualificative}`}
+  >
+    <div className="content">
+      <div className="image-container">
+        {/* Purposefully not using a JSS Image component here to avoid width/height HTML attributes on the img tag */}
+        <img src={imageSrc} alt="Image" loading="lazy" />
+      </div>
+      <div className="gradient-container"></div>
+      <div className="content-container">
+        <div className={`container-content-text`}>
+          <div>
+            <p className="title">
+              Meet the <span className="information-type">{lowerCaseQualificative}</span>{' '}
+              {props.TemplateName}:
+            </p>
+            <h1 className="name">
+              <Text field={props.Name} />
+            </h1>
           </div>
-          <div className="gradient-container"></div>
-          <div className="content-container">
-            <div className={`container-content-text`}>
-              <div>
-                <p className="title">
-                  Meet the <span className="information-type">{lowerCaseQualificative}</span>{' '}
-                  {props.TemplateName}:
-                </p>
-                <h1 className="name">
-                  <Text field={props.Name} />
-                </h1>
-              </div>
-              {informationsHTML}
-              <div className="external-website-icons">
-                <SocialIcon Icon={faFacebookF} Link={props.FacebookProfileLink} />
-                <SocialIcon Icon={faTwitter} Link={props.TwitterProfileLink} />
-                <SocialIcon Icon={faLinkedinIn} Link={props.LinkedinProfileLink} />
-                <SocialIcon Icon={faInstagram} Link={props.InstagramProfileLink} />
-              </div>
-            </div>
+          {informationsHTML}
+          <div className="external-website-icons">
+            <SocialIcon Icon={faFacebookF} Link={props.FacebookProfileLink} />
+            <SocialIcon Icon={faTwitter} Link={props.TwitterProfileLink} />
+            <SocialIcon Icon={faLinkedinIn} Link={props.LinkedinProfileLink} />
+            <SocialIcon Icon={faInstagram} Link={props.InstagramProfileLink} />
           </div>
         </div>
-        </section>
-    );
+      </div>
+    </div>
+  </section>
+  )
+  
+  /*
+  (
+
+    )*/
 };
 
 export default InformationPageHero;

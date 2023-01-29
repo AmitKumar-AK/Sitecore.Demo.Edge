@@ -1,12 +1,12 @@
 import { faCalendar, faClock, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import InfoText from 'components/NonSitecore/InfoText';
 import { getSessionDays, getSessionTime } from 'src/helpers/DateHelper';
-import { SessionInformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
+import { InformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
 import { Text } from '@sitecore-jss/sitecore-jss-nextjs';
 import DisplayName from 'src/features/PageContent/components/DisplayName';
 import DisplayTitle from 'src/features/PageContent/components/DisplayTitle';
 
-const SessionHeroBanner = (props: SessionInformationPageHeroProps): JSX.Element => {
+const SessionHeroBanner = (props: InformationPageHeroProps): JSX.Element => {
   const premiumSessionQualificative = props.Premium.value ? 'premium' : '';
   return (
     <section className={`session-information-page-hero ${premiumSessionQualificative}`}>

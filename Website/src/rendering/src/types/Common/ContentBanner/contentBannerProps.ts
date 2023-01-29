@@ -18,6 +18,10 @@ export interface SessionInformationPageHeroProps extends BaseContent {
   TemplateName:string;
 }  
 export interface InformationPageHeroProps extends BaseContent,SocialMediaProfiles {
+  Rooms: Room[];
+  Day: Day[];
+  Timeslots: Timeslot[];
+  Premium: Field<boolean>;
   Featured: Field<boolean>;
   Picture: ImageField;
   JobTitle: Field<string>;
