@@ -53,11 +53,9 @@ SharedFields:
           ph="/jss-header/jss-header-content-{2C75508C-1C34-584F-9B69-3496D386DACE}-0"
           uid="{CB853DDF-47A0-5691-8998-BE9CCB913526}" />
         <r
-          rname="SpeakerInformationPageHero"
-          id="{84040441-931E-48AD-AC7F-FD0145ADEB09}"
-          par=""
+          id="{E4953E1C-9F51-4012-BC98-ADB60446D490}"
           ph="/jss-main"
-          uid="{99503209-8F2B-563A-B886-A5131C9C4131}" />
+          uid="{C1D6AA1D-35A9-415C-AACA-8DD1D0C76BC2}" />
         <r
           rname="SpeakerInformation"
           ds=""
@@ -66,10 +64,6 @@ SharedFields:
           ph="/jss-main"
           uid="{C188AF30-3FE2-5450-AFE3-B207EFCEDFB1}"
           ccb="Clear on publish" />
-        <r
-          id="{E4953E1C-9F51-4012-BC98-ADB60446D490}"
-          ph="/jss-main"
-          uid="{C1D6AA1D-35A9-415C-AACA-8DD1D0C76BC2}" />
         <r
           rname="Section"
           ds="{174A7AFC-D923-58F3-BEF8-AD8CAAD8C5B9}"
@@ -105,7 +99,7 @@ Languages:
       Value: "{C55B483C-EA7F-4E76-A066-985F7D9396CA}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b73b4481-d5a0-4312-b3d1-c35d25229bb2"
+      Value: "a63c7c3e-60b1-47f8-8565-db445ec3e558"
     - ID: "e91669e4-7a60-495f-b868-47f9b15c28b3"
       Hint: Name
       Value: $name

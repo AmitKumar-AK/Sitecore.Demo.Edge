@@ -53,12 +53,6 @@ SharedFields:
           ph="/jss-header/jss-header-content-{DD4B4F17-3606-5C0C-9B08-2F5C225CF804}-0"
           uid="{F966B56F-A772-5676-9145-1CB48E76727D}" />
         <r
-          rname="VendorInformationPageHero"
-          id="{08A71664-6AF2-4CDB-A1EC-F27D4939EE3A}"
-          par=""
-          ph="/jss-main"
-          uid="{6E015E42-B3DE-5C03-8B35-5C2EC06BDBE4}" />
-        <r
           id="{E4953E1C-9F51-4012-BC98-ADB60446D490}"
           ph="/jss-main"
           uid="{ADB9967A-1AB7-4D16-8A7A-F703ED32071B}" />
@@ -109,7 +103,7 @@ Languages:
       Value: "{C55B483C-EA7F-4E76-A066-985F7D9396CA}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "02d11b1b-c8d9-4025-8cf4-57a5c4e752e5"
+      Value: "0accfe45-12e0-4a23-ad89-78cffda39e7c"
     - ID: "a73286b1-7c15-46cf-b3c1-af1dc7e43afe"
       Hint: LogoTransformation
       Value: medium

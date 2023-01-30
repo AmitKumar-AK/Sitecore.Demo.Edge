@@ -8,10 +8,11 @@ import {
 import SocialIcon from 'components/NonSitecore/SocialIcon';
 import { InformationPageHeroProps } from 'src/types/Common/ContentBanner/contentBannerProps';
 import SessionHeroBanner from './SessionHeroBanner';
+import DisplayName from 'src/features/PageContent/components/DisplayName';
+import DisplayTitle from 'src/features/PageContent/components/DisplayTitle';
 
 
 const InformationPageHero = (props: InformationPageHeroProps): JSX.Element => {
-  console.log('Here-2');
   const { sitecoreContext } = useSitecoreContext();
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
@@ -73,13 +74,8 @@ const InformationPageHero = (props: InformationPageHeroProps): JSX.Element => {
       <div className="content-container">
         <div className={`container-content-text`}>
           <div>
-            <p className="title">
-              Meet the <span className="information-type">{lowerCaseQualificative}</span>{' '}
-              {props.TemplateName}:
-            </p>
-            <h1 className="name">
-              <Text field={props.Name} />
-            </h1>
+            <DisplayTitle Title={"Meet the <span className='information-type'>" + lowerCaseQualificative + "</span> " + props.TemplateName.toLocaleLowerCase() + ":"} />            
+            <DisplayName Name={props.Name} />
           </div>
           {informationsHTML}
           <div className="external-website-icons">
