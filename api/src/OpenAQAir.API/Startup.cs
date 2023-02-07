@@ -28,9 +28,10 @@ namespace OpenAQAir.API
         {
         services.AddControllersWithViews();
         services.AddControllers();
+      services.AddRouting(opt => opt.LowercaseUrls = true);
 
-          // Register the Swagger generator, defining 1 or more Swagger documents
-          services.AddSwaggerGen(c =>
+      // Register the Swagger generator, defining 1 or more Swagger documents
+      services.AddSwaggerGen(c =>
                 {
                   c.SwaggerDoc("v2", new OpenApiInfo { Title = "OpenAQAir.API", Version = "v2" });
                 });
@@ -45,6 +46,7 @@ namespace OpenAQAir.API
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+      /*
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,6 +69,10 @@ namespace OpenAQAir.API
               //-- Enable this direct open the Swagger UI
               //c.RoutePrefix = string.Empty;
             });
+
+          
+
+
     
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -82,6 +88,29 @@ namespace OpenAQAir.API
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-        }
+
+
+          */
+
+            if (env.IsDevelopment())
+            {
+              app.UseDeveloperExceptionPage();
+
+              app.UseSwagger();
+              app.UseSwaggerUI(c =>
+              {
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "OpenAQAir.API v2");
+              });
+            }
+
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+              endpoints.MapControllers();
+
+            });
+
+    }
     }
 }

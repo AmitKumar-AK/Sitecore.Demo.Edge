@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  openaqair.api:
+    image: ${DOCKER_REGISTRY-}openaqairapi
+    build:
+      context: .
+      dockerfile: src\OpenAQAir.API\Dockerfile
