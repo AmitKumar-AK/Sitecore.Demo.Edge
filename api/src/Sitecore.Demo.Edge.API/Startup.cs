@@ -1,16 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
+using Serilog;
 using Sitecore.Demo.Edge.Application.DependencyInjection;
 using Sitecore.Demo.Edge.Infrastructure.OpenAQAir;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Sitecore.Demo.Edge.API
 {
@@ -19,7 +10,10 @@ namespace Sitecore.Demo.Edge.API
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
+          Configuration = configuration;
+          Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration).CreateLogger();
+    }
 
         public IConfiguration Configuration { get; }
 
