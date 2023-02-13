@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  openaqair.api:
-    image: ${DOCKER_REGISTRY-}openaqairapi
+  sitecore.demo.edge.api:
+    image: ${DOCKER_REGISTRY-}sitecoredemoedgeapi
     build:
       context: .
-      dockerfile: src\OpenAQAir.API\Dockerfile
+      dockerfile: src\Sitecore.Demo.Edge.API\Dockerfile
