@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpenAQAir.Domain.Entities
+﻿namespace OpenAQAir.Domain.Entities
 {
   public class BaseQuery
   {

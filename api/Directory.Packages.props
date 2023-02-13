@@ -43,8 +43,6 @@
                     Version="6.0.2" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions"
                     Version="6.0.0.0" />
-    <PackageVersion Include="Serilog.AspNetCore "
-                    Version="3.0.0" />
     <PackageVersion Include="Serilog.Settings.Configuration"
                     Version="3.3.0" />
     <PackageVersion Include="Serilog.Extensions.Logging.File"

@@ -24,7 +24,7 @@ namespace OpenAQAir.Application.Country.Services
       return response;
     }
 
-    public Task<CountryResponse> GetCountriesAsync(CountryQuery query)
+    public System.Threading.Tasks.Task<CountryResponse> GetCountriesAsync(CountryQuery query)
     {
       var response = _countryRepository.GetCountriesAsync(query);
       return response;

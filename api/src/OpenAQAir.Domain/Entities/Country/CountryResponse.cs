@@ -2,6 +2,6 @@
 {
   public class CountryResponse : Output
   {
-    public IEnumerable<CountryDetails>? Results { get; set; }
+    public System.Collections.Generic.IEnumerable<CountryDetails>? Results { get; set; }
   }
 }

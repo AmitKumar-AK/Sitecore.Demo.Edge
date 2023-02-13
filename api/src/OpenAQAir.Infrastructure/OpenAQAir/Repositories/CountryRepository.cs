@@ -29,13 +29,13 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
     public CountryRepository(IOptions<OpenAQAirSettings> openAQAirSettings, HtmlEncoder htmlEncoder, 
       ILogger<CountryRepository> logger, IMemoryCache cache)
     {
-      _openAQAirSettings = openAQAirSettings?.Value ?? throw new ArgumentNullException(nameof(openAQAirSettings));
+      _openAQAirSettings = openAQAirSettings?.Value ?? throw new System.ArgumentNullException(nameof(openAQAirSettings));
       _htmlEncoder = htmlEncoder;
       _logger = logger;
       _cache = cache;
     }
 
-    public Task<CountryResponse> GetCountriesAsync(CountryQuery query)
+    public System.Threading.Tasks.Task<CountryResponse> GetCountriesAsync(CountryQuery query)
     {
       GetAPIParameter(ref query);
 
@@ -106,7 +106,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
         else
         {
           #region If more than one country
-          var arrKeywords = query.Keyword.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+          var arrKeywords = query.Keyword.Split(new string[] { "," }, System.StringSplitOptions.RemoveEmptyEntries);
           StringBuilder sb = new StringBuilder("");
           if (arrKeywords != null && arrKeywords.Length > 0)
           {
@@ -117,7 +117,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
           }
           uri = _openAQAirSettings.OpenAQAirEndPoint + "/countries?" + "limit=" + query.PageSize + "&page=" + query.PageNumber + "&offset=" + offSet
             + "&" + string.Format(Constants.OpenAQAirSearch.Parameters.SortByFieldsClause, query.SortOrder)
-          + Convert.ToString(sb)
+          + System.Convert.ToString(sb)
           + "&order_by=country";
           #endregion
         }
@@ -132,15 +132,15 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
-    private async Task<CountryResponse> GetCountriesFromAPIAsync(CountryQuery query)
+    private async System.Threading.Tasks.Task<CountryResponse> GetCountriesFromAPIAsync(CountryQuery query)
     {
       CountryResponse? response = null;
       try
       {
-        using (var client = new HttpClient())
+        using (var client = new System.Net.Http.HttpClient())
         {
           //HTTP GET
-          var responseTask = client.GetAsync(new Uri(this.BuildUrl(query)));
+          var responseTask = client.GetAsync(new System.Uri(this.BuildUrl(query)));
           responseTask.Wait();
 
           var result = responseTask.Result;
@@ -158,7 +158,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
               response.CurrentPage = query.PageNumber;
               response.PageSize = query.PageSize;
               response.TotalCount = response.Meta!.Found;
-              response.TotalPages = (int)Math.Ceiling(response.Meta.Found / (double)query.PageSize);
+              response.TotalPages = (int)System.Math.Ceiling(response.Meta.Found / (double)query.PageSize);
               response.PreviousPageNumber = (query.PageNumber - 1);
               response.NextPageNumber = (query.PageNumber + 1);
             }
@@ -167,23 +167,23 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
       }
       catch (WebException ex)
       {
-        Stream? stream = null;
+        System.IO.Stream? stream = null;
         using (stream = ex?.Response?.GetResponseStream())
-        using (var reader = new StreamReader(stream!))
+        using (var reader = new System.IO.StreamReader(stream!))
         {
-          Console.WriteLine(reader.ReadToEnd());
+          //Console.WriteLine(reader.ReadToEnd());
           _logger.LogError("Server error. Please contact administrator. Error:" + reader.ReadToEnd());
         }
       }
-      catch (Exception ex)
+      catch (System.Exception ex)
       {
-        var line = Environment.NewLine + Environment.NewLine;
+        var line = System.Environment.NewLine + System.Environment.NewLine;
 
         string? ErrorlineNo = ex?.StackTrace;
         string? Errormsg = ex?.Message;
-        string? extype = ex.GetType().ToString();
-        string? ErrorLocation = ex.Message.ToString();
-        string error = "Log Written Date:" + " " + DateTime.Now.ToString()
+        string? extype = ex?.GetType().ToString();
+        string? ErrorLocation = ex?.Message.ToString();
+        string error = "Log Written Date:" + " " + System.DateTime.Now.ToString()
                             + line + "Error Line No :" + " " + ErrorlineNo + line
                             + "Error Message:" + " " + Errormsg + line + "Exception Type:" + " "
                             + extype + line + "Error Location :" + " " + ErrorLocation + line

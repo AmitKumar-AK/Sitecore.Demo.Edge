@@ -7,6 +7,6 @@ namespace OpenAQAir.Application.Country.Interfaces
   {
     public Output GetCountries(CountryQuery query);
 
-    public Task<CountryResponse> GetCountriesAsync(CountryQuery query);
+    public System.Threading.Tasks.Task<CountryResponse> GetCountriesAsync(CountryQuery query);
   }
 }

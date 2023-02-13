@@ -14,7 +14,7 @@ namespace OpenAQAir.Application.Country.Queries
       _countrySearchReader = countrySearchReader;
     }
 
-    public async Task<CountryResponse> Handle(SearchCountryQuery request, CancellationToken cancellationToken)
+    public async System.Threading.Tasks.Task<CountryResponse> Handle(SearchCountryQuery request, System.Threading.CancellationToken cancellationToken)
     {
       return await _countrySearchReader.GetCountriesAsync(request, cancellationToken);
     }

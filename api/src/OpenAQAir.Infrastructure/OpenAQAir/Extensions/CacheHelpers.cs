@@ -3,7 +3,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Extensions
 {
   public static class CacheHelpers
   {
-    public static readonly TimeSpan DefaultCacheDuration = TimeSpan.FromSeconds(5*60);
+    public static readonly System.TimeSpan DefaultCacheDuration = System.TimeSpan.FromSeconds(5*60);
     private static readonly string _itemsKeyTemplate = "items-{0}-{1}-{2}-{3}-{4}-{5}";
 
     /// <summary>

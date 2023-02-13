@@ -4,6 +4,8 @@
 #For more information, please see https://aka.ms/containercompat
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+# if not passed from Compose file then enable to show the swagger
+#ENV ASPNETCORE_ENVIRONMENT=Development
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -26,4 +28,5 @@ RUN dotnet publish "OpenAQAir.API.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
 ENTRYPOINT ["dotnet", "OpenAQAir.API.dll"]

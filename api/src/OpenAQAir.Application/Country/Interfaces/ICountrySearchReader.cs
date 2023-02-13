@@ -5,6 +5,6 @@ namespace OpenAQAir.Application.Country.Interfaces
 {
   public interface ICountrySearchReader
   {
-    Task<CountryResponse> GetCountriesAsync(SearchCountryQuery query, CancellationToken cancellationToken = default);
+    System.Threading.Tasks.Task<CountryResponse> GetCountriesAsync(SearchCountryQuery query, System.Threading.CancellationToken cancellationToken = default);
   }
 }

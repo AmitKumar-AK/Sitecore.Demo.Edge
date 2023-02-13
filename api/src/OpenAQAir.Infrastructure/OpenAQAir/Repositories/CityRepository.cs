@@ -28,7 +28,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
     public CityRepository(IOptions<OpenAQAirSettings> openAQAirSettings, HtmlEncoder htmlEncoder, 
       ILogger<CityRepository> logger, IMemoryCache cache)
     {
-      _openAQAirSettings = openAQAirSettings?.Value ?? throw new ArgumentNullException(nameof(openAQAirSettings));
+      _openAQAirSettings = openAQAirSettings?.Value ?? throw new System.ArgumentNullException(nameof(openAQAirSettings));
       _htmlEncoder = htmlEncoder;
       _logger = logger;
       _cache = cache;
@@ -38,7 +38,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
     {
       //To do, We can add logic to get all the cities with pagination
 
-      return null;
+      return new Output();
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
       if (string.IsNullOrEmpty(query.Keyword))
       {
         _logger.LogError("Keyword is empty");
-        throw new ArgumentNullException(nameof(query));
+        throw new System.ArgumentNullException(nameof(query));
       }
 
       var results = _cache.GetOrCreate(
@@ -68,14 +68,14 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
       return results.Result;
     }
 
-    public Task<CityResponse> GetCitiesAsync(CityQuery query)
+    public System.Threading.Tasks.Task<CityResponse> GetCitiesAsync(CityQuery query)
     {
       _logger.LogInformation("Infrastructure => GetCities :: Start");
       GetAPIParameter(ref query);
       if (string.IsNullOrEmpty(query.Keyword))
       {
         _logger.LogError("Keyword is empty");
-        throw new ArgumentNullException(nameof(query));
+        throw new System.ArgumentNullException(nameof(query));
       }
 
       var results = _cache.GetOrCreate(
@@ -113,7 +113,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
       else
       {
         #region If more than one country
-        var arrKeywords = query.Keyword.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+        var arrKeywords = query.Keyword.Split(new string[] { "," }, System.StringSplitOptions.RemoveEmptyEntries);
         StringBuilder sb = new StringBuilder("");
         if (arrKeywords != null && arrKeywords.Length >0)
         {
@@ -124,7 +124,7 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
         }
         uri = _openAQAirSettings.OpenAQAirEndPoint + "/cities?" + "limit=" + query.PageSize + "&page=" + query.PageNumber + "&offset=" + offSet
           + "&" + string.Format(Constants.OpenAQAirSearch.Parameters.SortByFieldsClause, query.SortOrder)
-        + Convert.ToString(sb)
+        + System.Convert.ToString(sb)
         + "&order_by=city";
         #endregion
       }
@@ -137,15 +137,15 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
-    private async Task<CityResponse> GetCitiesFromAPIAsync(CityQuery query)
+    private async System.Threading.Tasks.Task<CityResponse> GetCitiesFromAPIAsync(CityQuery query)
     {
       CityResponse? response = null;
       try
       {
-        using (var client = new HttpClient())
+        using (var client = new System.Net.Http.HttpClient())
         {
           //HTTP GET
-          var responseTask = client.GetAsync(new Uri(this.BuildUrl(query)));
+          var responseTask = client.GetAsync(new System.Uri(this.BuildUrl(query)));
           responseTask.Wait();
 
           var result = responseTask.Result;
@@ -163,29 +163,31 @@ namespace OpenAQAir.Infrastructure.OpenAQAir.Repositories
       }
       catch (WebException ex)
       {
-        Stream? stream = null;
+        System.IO.Stream? stream = null;
         using (stream = ex?.Response?.GetResponseStream())
-        using (var reader = new StreamReader(stream))
-        {
-          Console.WriteLine(reader.ReadToEnd());
-          _logger.LogError("Server error. Please contact administrator. Error:" + reader.ReadToEnd());
-        }
+        if(stream!=null)
+          {
+            using (var reader = new System.IO.StreamReader(stream))
+            {
+              //Console.WriteLine(reader.ReadToEnd());
+              _logger.LogError("Server error. Please contact administrator. Error:" + reader.ReadToEnd());
+            }
+          }
       }
-      catch (Exception ex)
+      catch (System.Exception ex)
       {
-        var line = Environment.NewLine + Environment.NewLine;
+        var line = System.Environment.NewLine + System.Environment.NewLine;
 
         string? ErrorlineNo = ex?.StackTrace;
         string? Errormsg = ex?.Message;
-        string? extype = ex.GetType().ToString();
-        string? ErrorLocation = ex.Message.ToString();
-        string error = "Log Written Date:" + " " + DateTime.Now.ToString()
+        string? extype = ex?.GetType().ToString();
+        string? ErrorLocation = ex?.Message.ToString();
+        string error = "Log Written Date:" + " " + System.DateTime.Now.ToString()
                             + line + "Error Line No :" + " " + ErrorlineNo + line
                             + "Error Message:" + " " + Errormsg + line + "Exception Type:" + " "
                             + extype + line + "Error Location :" + " " + ErrorLocation + line
                             +  line + line;
         _logger.LogError("Server error. Please contact administrator. Error:" + error);
-
       }
 
       return response;
