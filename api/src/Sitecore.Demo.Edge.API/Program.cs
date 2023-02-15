@@ -1,4 +1,6 @@
 ﻿using Serilog;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace Sitecore.Demo.Edge.API
 {

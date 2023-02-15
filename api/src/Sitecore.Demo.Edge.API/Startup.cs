@@ -2,6 +2,12 @@
 using Serilog;
 using Sitecore.Demo.Edge.Application.DependencyInjection;
 using Sitecore.Demo.Edge.Infrastructure.OpenAQAir;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace Sitecore.Demo.Edge.API
 {
