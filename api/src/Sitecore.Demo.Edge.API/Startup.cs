@@ -2,12 +2,14 @@
 using Serilog;
 using Sitecore.Demo.Edge.Application.DependencyInjection;
 using Sitecore.Demo.Edge.Infrastructure.OpenAQAir;
+// --- Please, don't remove this block using statement otherwise docker build will fail -- :: Start :: --
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+// --- Please, don't remove this block using statement otherwise docker build will fail -- :: End :: --
 
 namespace Sitecore.Demo.Edge.API
 {
