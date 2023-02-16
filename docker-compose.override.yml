@@ -75,6 +75,8 @@ services:
       AUTH0_CLIENT_ID: ${AUTH0_CLIENT_ID}
       AUTH0_CLIENT_SECRET: ${AUTH0_CLIENT_SECRET}
       NEXT_PUBLIC_AUTH0_ENABLED: ${AUTH0_ENABLED}
+      API_HOST_ENDPOINT: ${DOTNET_API_HOST}
+      API_HOST_PUBLIC_URL: "https://${DOTNET_API_HOST}"
       #DEBUG: ${DEBUG} # Uncomment this line and set the DEBUG environment variable value in the .env file to enable debug logging
     depends_on:
       - cm
@@ -430,16 +432,8 @@ services:
     depends_on:
       cm:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:80/health"]
-      timeout: 300s
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.api-secure.entrypoints=websecure"
       - "traefik.http.routers.api-secure.rule=Host(`${DOTNET_API_HOST}`)"
       - "traefik.http.routers.api-secure.tls=true"
-
-#networks:
- # default:
-  #  external:
-   #   name: amit
