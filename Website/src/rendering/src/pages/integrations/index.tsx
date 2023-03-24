@@ -15,10 +15,8 @@ export const getStaticProps = async () => {
 };
 
 const Integrations = (): JSX.Element => {
-  console.log('Here-2')
   return (
     <>
-      Here-1
     </>
   );
 };
