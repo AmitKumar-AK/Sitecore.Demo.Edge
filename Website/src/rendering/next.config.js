@@ -184,7 +184,7 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['playsummit.sitecoresandbox.cloud'],
+    domains: ['playsummit.sitecoresandbox.cloud','randomuser.me'],
   },  
 };
 
