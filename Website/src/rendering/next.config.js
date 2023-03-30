@@ -183,6 +183,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ['playsummit.sitecoresandbox.cloud'],
+  },  
 };
 
 module.exports = () => {

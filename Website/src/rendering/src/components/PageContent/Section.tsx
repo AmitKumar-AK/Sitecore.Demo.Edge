@@ -8,7 +8,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentWithChildrenProps } from 'lib/component-props';
 
-type SectionProps = ComponentWithChildrenProps & {
+export type SectionProps = ComponentWithChildrenProps & {
   fields: {
     cssClass: Field<string>;
     brightness: Field<string>;
