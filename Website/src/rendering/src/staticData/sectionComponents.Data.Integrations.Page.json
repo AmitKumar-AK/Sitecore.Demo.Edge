@@ -1,0 +1,19 @@
+{
+  "brightness": {
+    "value": "light"
+  },
+  "callToActionLink": {
+    "value": {
+      "href": ""
+    }
+  },
+  "content": {
+    "value": "<p class=\"font-bold\">\r\nThis page will show the listing of different types of integrations on non-Sitecore pages\r\n</p>"
+  },
+  "cssClass": {
+    "value": "left-full"
+  },
+  "title": {
+    "value": "This page is non-Sitecore Page"
+  }
+}
