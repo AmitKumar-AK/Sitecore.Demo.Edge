@@ -33,6 +33,8 @@ $RoleNameParamAdmin = ("RoleName='" + $SitecoreAuthorRolename + "'")
 $ProfilePropertyNames = ("ProfilePropertyNames='" + $SitecoreAuthorProfilePropertyNames + "'")
 $ProfilePropertyValueString = ("ProfilePropertyValueString='" + $SitecoreAuthorProfilePropertyValueString + "'")
 $paramsAdmin = $passwordParamAdmin, $saltParamAdmin, $UserNameParamAdmin, $EMailParamAdmin, $RoleNameParamAdmin, $ProfilePropertyNames, $ProfilePropertyValueString
+$ConnectionString = "Server=$SqlServer;User Id=$SqlAdminUser;Password=$SqlAdminPassword;TrustServerCertificate=True"
 
-Invoke-Sqlcmd -ServerInstance $SqlServer -Username $SqlAdminUser -Password $SqlAdminPassword -InputFile "C:\sql\CreateSitecoreAuthorUser.sql" -Variable $paramsAdmin
+#Invoke-Sqlcmd -ServerInstance $SqlServer -Username $SqlAdminUser -Password $SqlAdminPassword -InputFile "C:\sql\CreateSitecoreAuthorUser.sql" -Variable $paramsAdmin
+Invoke-Sqlcmd -ConnectionString $ConnectionString -InputFile "C:\sql\CreateSitecoreAuthorUser.sql" -Variable $paramsAdmin
 Write-Host "$(Get-Date -Format $timeFormat): Invoke CreateSitecoreAuthorUser.sql for $SitecoreAuthorUsername"
