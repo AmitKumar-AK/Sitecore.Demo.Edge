@@ -52,7 +52,7 @@ Users.getLayout = function getLayout() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    fetch('https://dummyapi.io/data/v1/user?limit=10',{
+    fetch('/api/userdata/user?limit=10',{
       headers: {
         "content-type": "application/json",
         "app-id": "64257e4727f0428978913c23",
@@ -62,7 +62,7 @@ Users.getLayout = function getLayout() {
       .then((data) => {
         setData(data)
       })
-  }, [])  
+  }, [])
   
   const sectionData = {
     fields:sectionJsonContent
@@ -78,3 +78,5 @@ Users.getLayout = function getLayout() {
 };
 
 export default Users;
+
+

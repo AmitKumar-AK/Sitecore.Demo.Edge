@@ -181,6 +181,11 @@ const nextConfig = {
         source: '/layouts/system/:path*',
         destination: `${jssConfig.sitecoreApiHost}/layouts/system/:path*`,
       },
+      // External user details
+      {
+        source: '/api/userdata/:slug*',
+        destination: `https://dummyapi.io/data/v1/:slug*`,
+      },
     ];
   },
   images: {
