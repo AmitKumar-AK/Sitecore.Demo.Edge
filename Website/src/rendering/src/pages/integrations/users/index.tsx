@@ -50,6 +50,7 @@ const Users = (): JSX.Element => {
 
 Users.getLayout = function getLayout() {
   const [data, setData] = useState(null)
+  const [proxydata, setProxyData] = useState(null)
 
   useEffect(() => {
     fetch('/api/userdata/user?limit=10',{
@@ -63,6 +64,19 @@ Users.getLayout = function getLayout() {
         setData(data)
       })
   }, [])
+
+  useEffect(() => {
+    fetch('/api/proxy/users',{
+      headers: {
+        "content-type": "application/json",
+        "app-id": "64257e4727f0428978913c23",
+      },
+    })
+      .then((res) => res.json())
+      .then((proxydata) => {
+        setProxyData(proxydata)
+      })
+  }, [])
   
   const sectionData = {
     fields:sectionJsonContent
@@ -72,7 +86,10 @@ Users.getLayout = function getLayout() {
     title="Integrations | Users"
   >
     <Section {...sectionData}/>
+    <div><strong>Use of NextJS Config Rewrites</strong></div>
     { renderUser(data?.data)}
+    <div><strong>Use of Proxy Route</strong></div>
+    { renderUser(proxydata?.data?.data)}
   </NonSitecorePageLayout>    
   );
 };
